@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote</title>
+</head>
+
+<body>
+    <!-- --- REQUEST A QUOTE PAGE (TOP SECTION) --- -->
+    <div class="quote-page-wrapper">
+        <style>
+            .quote-page-wrapper {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+                background-color: #ffffff;
+                max-width: 500px;
+                width: 100%;
+                margin: 0 auto;
+                box-sizing: border-box;
+            }
+
+            /* Top Bar */
+            .qp-top-bar {
+                text-align: center;
+                padding: 10px;
+                border-bottom: 1px solid #f0f0f0;
+            }
+
+            .qp-quote-btn {
+                background-color: #6a6a6a;
+                color: #ffffff;
+                border: none;
+                padding: 6px 12px;
+                font-size: 11px;
+                font-weight: 700;
+                letter-spacing: 0.5px;
+                text-transform: uppercase;
+                text-decoration: none;
+                display: inline-block;
+            }
+
+            .qp-quote-btn:hover {
+                background-color: #51b2a6;
+            }
+
+            /* Header */
+            .qp-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 20px 20px 15px;
+            }
+
+            .qp-logo {
+                font-family: 'Times New Roman', Times, serif;
+                font-size: 22px;
+                letter-spacing: 1.5px;
+                color: #1a1a1a;
+                margin: 0;
+                font-weight: normal;
+            }
+
+            .qp-search svg {
+                width: 22px;
+                height: 22px;
+                fill: #51b2a6;
+                cursor: pointer;
+            }
+
+            /* Hero Banner */
+            .qp-hero {
+                position: relative;
+                width: 100%;
+                height: 220px;
+                /* Placeholder image representing the screenshot */
+                background-image: url('/images/quote.PNG');
+                background-size: cover;
+                background-position: center 20%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                padding: 20px;
+                box-sizing: border-box;
+            }
+
+            .qp-hero::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.4);
+                /* Dark overlay for text readability */
+            }
+
+            .qp-hero-text {
+                position: relative;
+                z-index: 1;
+                color: #ffffff;
+            }
+
+            .qp-hero-text h1 {
+                font-family: 'Times New Roman', Times, serif;
+                font-size: 26px;
+                font-weight: normal;
+                margin: 0 0 10px 0;
+                letter-spacing: 0.5px;
+            }
+
+            .qp-hero-text p {
+                font-size: 14px;
+                line-height: 1.4;
+                margin: 0;
+                max-width: 280px;
+            }
+
+            /* Text Content Section */
+            .qp-content {
+                padding: 40px 20px 20px;
+            }
+
+            .qp-content h2 {
+                font-family: 'Times New Roman', Times, serif;
+                font-size: 36px;
+                font-weight: normal;
+                color: #1a1a1a;
+                margin: 0 0 25px 0;
+                line-height: 1.1;
+                letter-spacing: 1px;
+            }
+
+            .qp-content p {
+                color: #888888;
+                font-size: 16px;
+                line-height: 1.7;
+                margin: 0;
+            }
+
+            .qp-highlight {
+                color: #4da69c;
+                /* Teal brand color */
+                font-weight: 700;
+            }
+        </style>
+
+        <!-- Top navigation bar -->
+        <div class="qp-top-bar">
+            <a href="#" class="qp-quote-btn">Request A Quote</a>
+        </div>
+
+        <!-- Header area -->
+        <header class="qp-header">
+            <h1 class="qp-logo">INKED LIFE MIAMI</h1>
+            <div class="qp-search">
+                <svg viewBox="0 0 24 24">
+                    <path
+                        d="M23.822 20.88l-6.353-6.354c.93-1.465 1.467-3.2 1.467-5.059.001-5.219-4.247-9.467-9.468-9.467s-9.468 4.248-9.468 9.468c0 5.221 4.247 9.469 9.468 9.469 1.768 0 3.421-.487 4.839-1.333l6.396 6.396 3.119-3.12zm-20.294-11.412c0-3.273 2.665-5.938 5.939-5.938 3.275 0 5.94 2.664 5.94 5.938 0 3.275-2.665 5.939-5.94 5.939-3.274 0-5.939-2.664-5.939-5.939z" />
+                </svg>
+            </div>
+        </header>
+
+        <!-- Hero Banner -->
+        <div class="qp-hero">
+            <div class="qp-hero-text">
+                <h1>Do you have questions?</h1>
+                <p>Our knowledgeable, friendly team are here to assist you.</p>
+            </div>
+        </div>
+
+        <!-- Introduction Text -->
+        <div class="qp-content">
+            <h2>REQUEST A<br>QUOTE</h2>
+            <p>
+                Want to <span class="qp-highlight">discuss an idea</span> or <span class="qp-highlight">schedule an
+                    appointment?</span> Stop by today to meet one of our amazing artists for a free consultation and/or
+                fill out the form below. If you encounter a question that is unclear or difficult to answer, please
+                provide your best estimate and mention at the end how we can assist you further
+            </p>
+        </div>
+    </div>
+    <iframe id="JotFormIFrame-262453732765564" title="Request a Quote" onload="window.parent.scrollTo(0,0)"
+        allowtransparency="true" allow="geolocation; microphone; camera; fullscreen; payment"
+        src="https://form.jotform.com/262453732765564" frameborder="0"
+        style="min-width:100%;max-width:100%;height:539px;border:none;" scrolling="no">
+    </iframe>
+    <script src='https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js'></script>
+    <script>window.jotformEmbedHandler("iframe[id='JotFormIFrame-262453732765564']", "https://form.jotform.com/")</script>
+</body>
+
+</html>

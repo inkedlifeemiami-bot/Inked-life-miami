@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Inked Life Miami &ndash;The #1 Tattoo Shop in Miami</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- CORE STYLES & VARIABLES --- */
+        :root {
+            --primary-bg: #ffffff;
+            --text-dark: #1a1a1a;
+            --top-bar-bg: #525a5b;
+            --btn-teal: #65b5b5;
+            --btn-pink: #e683c3;
+            --font-serif: 'Times New Roman', Times, serif;
+            /* Elegant styling for headings */
+            --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--primary-bg);
+            color: var(--text-dark);
+            font-family: var(--font-sans);
+            /* Padding bottom ensures the sticky bar doesn't cover content */
+            padding-bottom: 80px;
+            overflow-x: hidden;
+        }
+
+        /* --- TOP BAR --- */
+        .top-bar {
+            background-color: var(--top-bar-bg);
+            text-align: center;
+            padding: 0.005em 8px 0.3em;
+            display: inline-block;
+            margin-left: 34%;
+        }
+
+        .top-bar a {
+            color: rgb(184, 158, 158);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        /* --- HEADER --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 25px;
+            background-color: var(--primary-bg);
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 22px;
+            letter-spacing: 2.5px;
+            line-height: 1.5;
+            text-decoration: none;
+            color: var(--text-dark);
+            margin-left: 11px;
+        }
+
+        .search-icon {
+            color: var(--btn-teal);
+            font-size: 18px;
+            margin-right: 15%;
+            margin-bottom: 12px;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 24vh;
+            /* Adjusts nicely on mobile */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url('/images/hero.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero-content {
+            color: #ffffff;
+        }
+
+        .hero-title {
+            font-family: var(--font-serif);
+            font-size: 21px;
+            margin: 55px 55px 10px 10px;
+            font-weight: bolder;
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-sans);
+            font-size: 13px;
+            font-weight: 600;
+            margin-right: 67px;
+        }
+
+        /* --- TEXT SECTION --- */
+        .statement-section {
+            padding: 60px 30px;
+            text-align: center;
+        }
+
+        .statement-title {
+            font-family: var(--font-serif);
+            font-size: 26px;
+            line-height: 1.3;
+            font-weight: normal;
+            letter-spacing: 1px;
+        }
+
+        /* --- IMAGE SHOWCASE SECTION --- */
+        .image-showcase {
+            width: 100%;
+            padding: 0 40px 40px;
+        }
+
+        .image-showcase img {
+            width: 80vw;
+            height: auto;
+            display: block;
+        }
+
+        /* --- STICKY BOTTOM ACTION BAR --- */
+        .sticky-bottom-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            background-color: #1a1a1a;
+            padding: 8px;
+            /* Accounts for mobile safe areas */
+            padding-bottom: calc(10px + env(safe-area-inset-bottom));
+            z-index: 1000;
+            gap: 10px;
+        }
+
+        .action-btn {
+            flex: 1;
+            padding: 9px 0;
+            border-radius: 25px;
+            border: none;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .btn-call {
+            background-color: var(--btn-teal);
+            color: #ffffff;
+        }
+
+        .btn-directions {
+            background-color: var(--btn-pink);
+            color: #1a1a1a;
+        }
+
+        /* --- ANIMATION CSS --- */
+        /* These classes handle the smooth slide-up effect */
+        .slide-up {
+            opacity: 0;
+            transform: translateY(60px);
+            /* Starts 60px below */
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, transform;
+        }
+
+        .slide-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+            /* Returns to original position */
+        }
+
+        .plain {
+            font-weight: 300;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-family: var(--font-serif);
+        }
+
+        .plaint {
+            font-weight: 100;
+            word-spacing: 2px;
+            text-align: justify;
+        }
+
+        .artist {
+            font-family: var(--font-serif);
+            font-size: 26px;
+            line-height: 1.3;
+            font-weight: normal;
+            letter-spacing: 1px;
+            margin: 90px 0 0 120px;
+        }
+
+        /* Scoped Styles for Our Artists Section Only */
+        .oa-artists-section {
+            background-color: #f7f7f7;
+            padding: 50px 20px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .oa-section-header {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 26px;
+            text-align: center;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+            font-weight: normal;
+            color: #1a1a1a;
+        }
+
+        .oa-artist-card {
+            max-width: 500px;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+
+        .oa-artist-photo {
+            width: 75%;
+            height: 15%;
+            display: block;
+            margin-bottom: 25px;
+            margin-left: 50px;
+        }
+
+        .oa-artist-name {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 28px;
+            margin-bottom: 15px;
+            font-weight: normal;
+            color: #1a1a1a;
+        }
+
+        .oa-artist-bio {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-size: 15px;
+            line-height: 1.6;
+            color: #7a7a7a;
+        }
+
+        .oa-artist-bio p {
+            margin-bottom: 15px;
+            color: #7a7a7a;
+        }
+
+        /* Standard Link - Opens in same tab */
+        .oa-more-link {
+            color: #65b5b5;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: -5px;
+        }
+
+        .oa-more-link:hover {
+            text-decoration: underline;
+        }
+
+        /* ABOUT US SECTION */
+        .au-section {
+            background-color: #ffffff;
+            padding: 50px 20px;
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+        }
+
+        .au-container {
+            max-width: 500px;
+            /* Keeps the text and image aligned nicely */
+            width: 100%;
+        }
+
+        .au-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 30px;
+        }
+
+        .au-heading {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 28px;
+            letter-spacing: 1.5px;
+            margin-bottom: 15px;
+            font-weight: normal;
+            color: #1a1a1a;
+        }
+
+        .au-text {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-size: 15px;
+            line-height: 1.8;
+            color: #7a7a7a;
+        }
+
+        .au-highlight {
+            color: #65b5b5;
+            /* Teal brand color */
+            font-weight: bold;
+        }
+
+        /* TATOO AFTERCARE SECTION */
+        .ac-section {
+            background-color: #f7f7f7;
+            /* Matches the Our Artists background */
+            padding: 50px 20px;
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+        }
+
+        .ac-container {
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .ac-heading {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 32px;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+            font-weight: normal;
+            color: #1a1a1a;
+            line-height: 1.2;
+        }
+
+        .ac-list {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-size: 15px;
+            line-height: 1.8;
+            color: #7a7a7a;
+            padding-left: 20px;
+            /* Indents the numbers */
+            margin-bottom: 40px;
+        }
+
+        .ac-list li {
+            margin-bottom: 15px;
+            padding-left: 5px;
+            /* Adds a little space between the number and text */
+        }
+
+        .ac-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* RECENT WORK SECTION */
+        .rw-section {
+            background-color: #ffffff;
+            padding: 25px 20px;
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+        }
+
+        .rw-container {
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .rw-heading {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 26px;
+            letter-spacing: 1.5px;
+            margin-bottom: 15px;
+            font-weight: normal;
+            color: #1a1a1a;
+            line-height: 1.2;
+            text-transform: uppercase;
+        }
+
+        /* Horizontal Scroll Snap Container (No JavaScript) */
+        .rw-slider-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            border-radius: 4px;
+            /* Hides scrollbar across browsers */
+            scrollbar-width: none;
+            /* Firefox */
+            -ms-overflow-style: none;
+            /* IE/Edge */
+        }
+
+        .rw-slider-container::-webkit-scrollbar {
+            display: none;
+            /* Chrome, Safari, Opera */
+        }
+
+        .rw-slide-img {
+            flex: 0 0 100%;
+            /* Each photo takes full width of the box */
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            max-height: 380px;
+            object-fit: cover;
+            scroll-snap-align: start;
+            display: block;
+        }
+
+        .rw-swipe-hint {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 12px;
+            color: #7a7a7a;
+            margin-top: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .mp-section {
+            background-color: #f7f7f7;
+            padding: 40px 20px;
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+        }
+
+        .mp-container {
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .mp-map-wrapper {
+            width: 100%;
+            height: 480px;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .mp-map-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .bk-section {
+            background-color: #ffffff;
+            padding: 30px 20px 40px;
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        .bk-container {
+            max-width: 500px;
+            width: 100%;
+        }
+
+        /* Top Social Sharing Bar */
+        .bk-social-bar {
+            display: flex;
+            border: 1px solid #e5e5e5;
+            border-radius: 2px;
+            margin-bottom: 40px;
+            overflow: hidden;
+            background-color: #ffffff;
+        }
+
+        .bk-social-icon {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 48px;
+            border-right: 1px solid #e5e5e5;
+            color: #666666;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: background-color 0.2s ease;
+        }
+
+        .bk-social-icon:last-child {
+            border-right: none;
+        }
+
+        .bk-social-icon:hover {
+            background-color: #f7f7f7;
+        }
+
+        .bk-social-icon svg {
+            width: 16px;
+            height: 16px;
+            fill: #777777;
+        }
+
+        /* Headings */
+        .bk-heading {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 18px;
+            font-weight: normal;
+            color: #1a1a1a;
+            margin: 35px 0 25px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Book Us Contact Details */
+        .bk-info-block {
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        .bk-brand {
+            color: #51b2a6;
+            font-weight: 700;
+            margin: 0 0 6px 0;
+            font-size: 19px;
+        }
+
+        .bk-address {
+            color: #a0a0a0;
+            margin: 0 0 4px 0;
+            text-decoration: underline;
+            text-decoration-style: dotted;
+            text-underline-offset: 4px;
+        }
+
+        .bk-note {
+            color: #b5b5b5;
+            margin: 0 0 25px 0;
+            font-size: 17px;
+        }
+
+        .bk-contact-item {
+            color: #51b2a6;
+            font-weight: 700;
+            margin: 6px 0;
+        }
+
+        .bk-contact-item a {
+            color: #51b2a6;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .sh-section {
+            background-color: #ffffff;
+            padding: 40px 20px 30px;
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        .sh-container {
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .sh-heading {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 30px;
+            font-weight: normal;
+            color: #1a1a1a;
+            margin-bottom: 25px;
+            letter-spacing: 0.5px;
+        }
+
+        .sh-hours-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 70px 0;
+            color: #a0a0a0;
+            font-size: 18px;
+            line-height: 2.1;
+        }
+
+        .sh-footer-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 20px;
+            color: #a0a0a0;
+            font-size: 13px;
+        }
+
+        .sh-social-links {
+            display: flex;
+            gap: 14px;
+            align-items: center;
+        }
+
+        .sh-social-links a {
+            color: #777777;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .sh-social-links svg {
+            width: 15px;
+            height: 15px;
+            fill: #777777;
+            transition: fill 0.2s ease;
+        }
+
+        .sh-social-links a:hover svg {
+            fill: #1a1a1a;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="top-bar">
+        <a href="/work/quote.html">REQUEST A QUOTE</a>
+    </div>
+
+    <header>
+        <a href="#" class="logo">INKED LIFE MIAMI</a>
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+    </header>
+
+    <section class="hero slide-up">
+        <div class="hero-content">
+            <h1 class="hero-title">The #1 Tattoo Shop in Miami</h1>
+            <p class="hero-subtitle">Come visit Miami's premier tattoo shop</p>
+        </div>
+    </section>
+
+    <section class="statement-section slide-up">
+        <h2 class="statement-title">OUR ART LIVES &<br>BREATHES THROUGH<br>YOU</h2>
+    </section>
+
+    <section class="image-showcase slide-up">
+        <img src="/images/second.jpeg" alt="Tattoo Detail Close Up">
+        <h1 class="plain">The First Timer</h1>
+        <p class="plaint">At Inked Life Miami, our artists take the time you need to make sure you are comfortable and
+            confident in
+            your tattoo experience. Please feel free to ask us anything. There are no wrong questions when it comes to
+            modifying your most valued possession—your body.</p>
+    </section>
+
+    <section class="image-showcase slide-up">
+        <img src="/images/third.jpg" alt="Tattoo Shop Interior">
+        <h1 class="plain">The Tattoo Collector</h1>
+        <p class="plaint">We love and collect tattoos just like you do. Stop in for a free consultation with our
+            world-class tattoo
+            artists. We’ll consult with you about your ideas and long-term goals and connect you for a one-on-one
+            session with the artist of your choosing. Our artists take the time to understand your visions—and we make
+            sure those visions are fully realized.</p>
+    </section>
+
+    <section class="image-showcase slide-up">
+        <img src="/images/fourth.jpg" alt="Tattoo Shop Interior">
+        <h1 class="plain">Body Piercings</h1>
+        <p class="plaint">We offer all types and styles of body piercing performed by the best and most experienced
+            pierces in Miami. We also offer an exclusive line-up of body piercing jewelry for sale, including 14k gold,
+            titanium and implant grade stainless steel. more info here</p>
+    </section>
+    <section>
+        <div class="oa-artists-section">
+            <h2 class="oa-section-header">OUR ARTISTS</h2>
+
+            <div class="oa-artist-card slide-up">
+                <img src="/images/frankie.PNG" alt="Frank" class="oa-artist-photo">
+                <h3 class="oa-artist-name">Frank</h3>
+                <div class="oa-artist-bio">
+                    <p class="oa-bio-preview-text">
+                        Frank is a highly skilled artist who specializes in creating black and grey realistic tattoo
+                        designs, with his own unique touch in every project he starts. This means that he has the
+                        ability to bring his own creative vision to each piece he creates, adding a personal flair that
+                        makes his work stand out from others in the industry.
+                    </p>
+                    <!-- Link to the new page file -->
+                    <a href="frank.html" class="oa-more-link">...more</a>
+                </div>
+            </div>
+            <div class="oa-artist-card slide-up">
+                <img src="/images/juan.jpeg" alt="Frank" class="oa-artist-photo">
+                <h3 class="oa-artist-name">Juan</h3>
+                <div class="oa-artist-bio">
+                    <p class="oa-bio-preview-text">
+                        Meet Juan, a highly skilled tattoo artist renowned for his expertise in the captivating world of
+                        blackwork neo-traditional tattoos. Hailing from an artistic background, Juan’s journey into the
+                        realm of tattooing is a captivating tale of creativity and dedication.
+                    </p>
+                    <!-- Link to the new page file -->
+                    <a href="juan.html" class="oa-more-link">...more</a>
+                </div>
+            </div>
+
+            <div class="oa-artist-card slide-up">
+                <img src="/images/sanz.PNG" alt="Sanz" class="oa-artist-photo">
+                <h3 class="oa-artist-name">Sanz</h3>
+                <div class="oa-artist-bio">
+                    <p class="oa-bio-preview-text">
+                        Born and raised in Cuba, Sanz has cultivated his artistry into mastery, becoming one of Miami’s
+                        top micro realism tattoo artists. With an extraordinary eye for detail and a passion for
+                        transforming skin into living art,
+
+
+                    </p>
+                    <!-- Link to the new page file -->
+                    <a href="sanz.html" class="oa-more-link">...more</a>
+                </div>
+            </div>
+
+            <div class="oa-artist-card slide-up">
+                <img src="/images/mateo.png" alt="Sanz" class="oa-artist-photo">
+                <h3 class="oa-artist-name">Mateo</h3>
+                <div class="oa-artist-bio">
+                    <p class="oa-bio-preview-text">
+                        Mateo, a Colombian-American artist, was born and raised in Miami, Florida. He has been
+                        passionate about art since he was young, and his love for drawing began as soon as he could hold
+                        a pencil. His first interest was in graffiti and lettering, which eventually led to his
+                        fascination with tattooing after seeing his uncle’s ink.
+                    </p>
+                    <!-- Link to the new page file -->
+                    <a href="mateo.html" class="oa-more-link">...more</a>
+                </div>
+
+                <div class="oa-artist-card slide-up">
+                    <img src="/images/franco.jpg" alt="Sanz" class="oa-artist-photo">
+                    <h3 class="oa-artist-name">Franco</h3>
+                    <div class="oa-artist-bio">
+                        <p class="oa-bio-preview-text">
+                            Franco, a distinguished tattoo artist from Peru, specializes in the avant-garde style known
+                            as cyber fluidity, or blackwork. His journey in tattoo artistry began with a fervent desire
+                            to transform concepts into wearable art. With a unique skill set and a passion for mastering
+                            the intricacies of blackwork,
+                        </p>
+                        <!-- Link to the new page file -->
+                        <a href="franco.html" class="oa-more-link">...more</a>
+                    </div>
+                </div>
+
+                <div class="oa-artist-card slide-up">
+                    <img src="/images/madeline.jpeg" alt="Sanz" class="oa-artist-photo">
+                    <h3 class="oa-artist-name">Madeline</h3>
+                    <div class="oa-artist-bio">
+                        <p class="oa-bio-preview-text">
+                            Madeline is an American tattoo artist born and raised in Texas, who has been honing her
+                            craft since
+                            2013. Alongside tattooing, she also has experience in painting and illustration. Throughout
+                            her
+                            career, she has worked in several studios across Texas, where she has learned from other
+                            artists and
+                            continued to develop her skills.
+                        </p>
+                        <!-- Link to the new page file -->
+                        <a href="ana.html" class="oa-more-link">...more</a>
+                    </div>
+                </div>
+                <div class="oa-artist-card slide-up">
+                    <img src="/images/rob.png" alt="Sanz" class="oa-artist-photo">
+                    <h3 class="oa-artist-name">Rob</h3>
+                    <div class="oa-artist-bio">
+                        <p class="oa-bio-preview-text">
+                            Rob is a highly skilled artist based in San Diego, with a focus on fine line and
+                            micro-realism techniques. He is most well-known for his beautiful floral work, which
+                            incorporates delicate fine lines, soft shading, and a clever balance of free space and dense
+                            foliage layers to create a sense of movement and flow in his pieces.
+                        </p>
+                        <!-- Link to the new page file -->
+                        <a href="rob.html" class="oa-more-link">...more</a>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <div class="au-section">
+        <div class="au-container">
+            <!-- Placeholder image from Unsplash matching the vibe -->
+            <img src="/images/about.png" alt="Tattooed Back" class="au-image">
+
+            <h2 class="au-heading">ABOUT US</h2>
+
+            <p class="au-text">
+                <span class="au-highlight">Inked life Miami</span> is the #1 Tattoo Shop in South Beach. With an amazing
+                line-up of world-class tattoo artists specializing in all aspects and styles of tattoo, including
+                traditional, Japanese, black and gray minimalist black work, dot work, realism, portraits, cover ups and
+                watercolor, as well as all aspects of cosmetic tattooing. Our team offers high-end solutions for all
+                your body styling needs.
+            </p>
+            <p class="au-text" style="margin-top: 8px; margin-bottom: 8px;">Accepting walk-ins all day, come in for a
+                free consult!</p>
+            <p class="au-text">Open seven days a week for your tattoo and piercing needs, our procedures honor the
+                industry’s highest
+                standards for cleanliness and sterile, professional application.</p>
+        </div>
+    </div>
+    <div class="ac-section">
+        <div class="ac-container">
+            <h2 class="ac-heading">TATTOO<br>AFTERCARE</h2>
+
+            <ol class="ac-list">
+                <li>Leave your bandage on for a minimum of 1 hour, and no longer than 5 hours.</li>
+                <li>After removal of bandage, wash thoroughly with hot water and preferably a mild, liquid, UNSCENTED,
+                    soap. (dial, equate, etc.)</li>
+                <li>Pat dry with a clean paper towel</li>
+                <li>Apply a THIN layer of product (FRAGRANCE FREE HAND LOTION, TATTOO GOO) and massage into the skin to
+                    the point where it just barely looks moist, clogging pores, etc.</li>
+                <li>THE MOST IMPORTANT PART OF HEALING YOUR TATTOO IS KEEPING IT CLEAN WITH SOAP AND WATER!</li>
+                <li>Repeat the above process for a week or two.</li>
+            </ol>
+
+            <!-- Placeholder image matching the layout of image_9.png -->
+            <img src="/images/tattooo-self-care-1.jpg" alt="Woman with sleeve tattoo" class="ac-image">
+        </div>
+    </div>
+    <section class="rw-section">
+        <div class="rw-container">
+            <h2 class="rw-heading">SOME OF OUR<br>RECENT WORK</h2>
+
+            <!-- All 15 images are listed as standard HTML tags -->
+            <div class="rw-slider-container">
+                <img class="rw-slide-img" src="work/1A535EB9-1E4C-4043-B143-3D68EA7B53CB.jpg" alt="Recent Work 1">
+                <img class="rw-slide-img" src="/work/01c6895d-b210-44f1-8d66-d8309cb7103c.jpg" alt="Recent Work 2">
+                <img class="rw-slide-img" src="/work/105498F7-819F-4F28-9333-4CB0976819AF.jpg" alt="Recent Work 3">
+                <img class="rw-slide-img" src="/work/17-1-1751x2048.jpeg" alt="Recent Work 4">
+                <img class="rw-slide-img" src="/work/1A535EB9-1E4C-4043-B143-3D68EA7B53CB.jpg" alt="Recent Work 5">
+                <img class="rw-slide-img" src="/work/20-6.jpg" alt="Recent Work 6">
+                <img class="rw-slide-img" src="/work/2bf22b98-dbd1-4084-9022-19f370ebafd7.jpg" alt="Recent Work 7">
+                <img class="rw-slide-img" src="/work/2C126424-5A1E-4FF2-A229-F6DCFE228DF3-1378x1500.jpg"
+                    alt="Recent Work 8">
+                <img class="rw-slide-img" src="/work/4-2.png" alt="Recent Work 9">
+                <img class="rw-slide-img" src="/work/4A140CDE-4E2D-4E48-89F9-09D286FD68BC.jpg" alt="Recent Work 10">
+                <img class="rw-slide-img" src="/work/505CECE5-EC14-462A-B0B2-682E4CB9E180.jpg" alt="Recent Work 11">
+                <img class="rw-slide-img" src="/work/52cf89e4-81a5-4fcc-94ec-917d0ea24052.jpg" alt="Recent Work 12">
+                <img class="rw-slide-img" src="/work/8e932f0e-7a1d-4c22-9b89-5f00663902b2-1.jpg" alt="Recent Work 13">
+                <img class="rw-slide-img" src="/work/57b8c77b-b12a-4c58-9ed4-6598dd463249.jpg" alt="Recent Work 14">
+                <img class="rw-slide-img" src="/work/IMG_6438-1536x2048.jpg" alt="Recent Work 15">
+                <img class="rw-slide-img" src="/work/9-1.png" alt="Recent Work 16">
+                <img class="rw-slide-img" src="/work/96a7f935-6c2e-4684-8963-50799d2aa7cd.jpg" alt="Recent Work 17">
+                <img class="rw-slide-img" src="/work/9pt2-1.jpg" alt="Recent Work 18">
+                <img class="rw-slide-img" src="/work/BCC349D5-5510-4061-9C3D-CAF97FE6A5A0.jpg" alt="Recent Work 19">
+                <img class="rw-slide-img" src="/work/armour_tat6-1536x2048.jpg" alt="Recent Work 20">
+                <img class="rw-slide-img" src="/work/BFF27F09-4374-436C-8BEB-77A512D80A70.jpg" alt="Recent Work 21">
+                <img class="rw-slide-img" src="/work/bryan_chest22-1536x2048.jpg" alt="Recent Work 22">
+                <img class="rw-slide-img" src="/work/butterfly_8-1500x1415.jpg" alt="Recent Work 23">
+                <img class="rw-slide-img" src="/work/cait_leg9-1536x2048.jpg" alt="Recent Work 24">
+                <img class="rw-slide-img" src="/work/camera-1769x2048.jpg" alt="Recent Work 25">
+                <img class="rw-slide-img" src="/work/ceffef6e-fa4c-470a-a86a-16d6e1218caa.jpg" alt="Recent Work 26">
+                <img class="rw-slide-img" src="/work/d0530453-fcb3-44b7-a11d-9aee6ad0d991.jpg" alt="Recent Work 27">
+                <img class="rw-slide-img" src="/work/DB1EB6A9-6A01-47F3-AE60-FF40CD24658C.jpg" alt="Recent Work 28">
+                <img class="rw-slide-img" src="/work/dog_portrait-1715x2048.jpg" alt="Recent Work 29">
+                <img class="rw-slide-img" src="/work/E791DAD6-3F56-4579-9DE6-BB7C0D9E9FF0.jpg" alt="Recent Work 30">
+                <img class="rw-slide-img" src="/work/EEC7BAD1-11A2-40E2-85BF-9A7BB8643FB9.jpg" alt="Recent Work 31">
+                <img class="rw-slide-img" src="/work/first.png" alt="Recent Work 32">
+                <img class="rw-slide-img" src="/work/floral_legside-1801x2048.jpg" alt="Recent Work 33">
+                <img class="rw-slide-img" src="/work/hand_tats-2.jpg" alt="Recent Work 34">
+                <img class="rw-slide-img" src="/work/IMG_0117-1536x2048.jpg" alt="Recent Work 35">
+                <img class="rw-slide-img" src="/work/IMG_0215-1536x2048.jpg" alt="Recent Work 36">
+                <img class="rw-slide-img" src="/work/IMG_0242-1798x2048.png" alt="Recent Work 37">
+                <img class="rw-slide-img" src="/work/IMG_0379-1536x2048.jpg" alt="Recent Work 38">
+            </div>
+
+            <p class="rw-swipe-hint">Swipe left/right to view more →</p>
+        </div>
+    </Section>
+    <section class="mp-section">
+        <div class="mp-container">
+            <div class="mp-map-wrapper">
+                <!-- Google Maps Embed -->
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d249.3636450214468!2d0!3d0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9b48e21b540f5%3A0x6d05b07b1e085d8e!2sINKED%20LIFE%20MIAMI!5e0!3m2!1sen!2sng!4v1788350475990!5m2!1sen!2sng"
+                    width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </div>
+        </div>
+    </section>
+    <section class="bk-section">
+        <div class="bk-container">
+            <!-- Top Social Bar -->
+            <div class="bk-social-bar">
+                <a href="https://facebook.com" target="_blank" class="bk-social-icon" aria-label="Facebook">f</a>
+                <a href="https://twitter.com" target="_blank" class="bk-social-icon" aria-label="Twitter">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+                    </svg>
+                </a>
+                <a href="https://pinterest.com" target="_blank" class="bk-social-icon" aria-label="Pinterest">P</a>
+                <a href="https://linkedin.com" target="_blank" class="bk-social-icon" aria-label="LinkedIn">in</a>
+                <a href="https://tumblr.com" target="_blank" class="bk-social-icon" aria-label="Tumblr">t</a>
+                <a href="https://vk.com" target="_blank" class="bk-social-icon" aria-label="VK">VK</a>
+                <a href="https://reddit.com" target="_blank" class="bk-social-icon" aria-label="Reddit">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.182 1.207.49 1.207-.869 2.862-1.43 4.688-1.493l.943-4.416 3.2 0.675c.084-.337.382-.588.74-.588z" />
+                    </svg>
+                </a>
+                <a href="mailto:inkedlifemiami@gmail.com" class="bk-social-icon" aria-label="Email">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.036l-9.518 7.713-9.518-7.713zm5.694 6.488l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-0.559l4.616-3.741v9.432l-4.616-5.691z" />
+                    </svg>
+                </a>
+            </div>
+
+            <h2 class="bk-heading">Follow On Instagram</h2>
+
+            <h2 class="bk-heading">Book Us Today</h2>
+
+            <div class="bk-info-block">
+                <p class="bk-brand">Inked Life Miami</p>
+                <p class="bk-address">1247 Washington Ave</p>
+                <p class="bk-address">Miami Beach, Florida 33139</p>
+                <p class="bk-note">Located in the heart of South Beach</p>
+
+                <p class="bk-contact-item">Email: <a
+                        href="mailto:inkedlifeemiami@gmail.com">inkedlifeemiami@gmail.com</a>
+                </p>
+                <p class="bk-contact-item">Phone: <a href="tel:+19047898435">1-904-789-8435</a></p>
+            </div>
+        </div>
+    </section>
+    <section class="sh-section">
+        <div class="sh-container">
+            <h2 class="sh-heading">Store Hours</h2>
+
+            <ul class="sh-hours-list">
+                <li>Mon: 11:00 am – 11:00 pm</li>
+                <li>Tue: 11:00 am – 11:00 pm</li>
+                <li>Wed: 11:00 am – 11:00 pm</li>
+                <li>Thu: 11:00 am – 12:00 am</li>
+                <li>Fri : 11:00 am – 12:00 am</li>
+                <li>Sat: 11:00 am – 12:00 am</li>
+                <li>Sun: 11:00 am – 11:00 pm</li>
+            </ul>
+
+            <footer class="sh-footer-bar">
+                <span>&copy; Copyright Inked Life Miami</span>
+
+                <div class="sh-social-links">
+                    <!-- Instagram -->
+                    <a href="https://www.instagram.com/inkedlifemiami?utm_source=ig_web_button_share_sheet&igsi=ZDNlZDc0MzIxNw=="
+                        target="_blank" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg>
+                    </a>
+                    <!-- Facebook -->
+                    <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.374 14.5 5 15.5 5H18V0h-3.808C10.592 0 9 1.583 9 4.615V8z" />
+                        </svg>
+                    </a>
+                    <!-- Email -->
+                    <a href="mailto:inkedlifeemiami@gmail.com" aria-label="Email">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.036l-9.518 7.713-9.518-7.713zm5.694 6.488l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-0.559l4.616-3.741v9.432l-4.616-5.691z" />
+                        </svg>
+                    </a>
+                    <!-- Pinterest -->
+                    <a href="https://pinterest.com" target="_blank" aria-label="Pinterest">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.229 7.462-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z" />
+                        </svg>
+                    </a>
+                    <!-- Twitter / X -->
+                    <a href="https://twitter.com" target="_blank" aria-label="Twitter">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+                        </svg>
+                    </a>
+                </div>
+            </footer>
+        </div>
+    </section>
+    <div class="sticky-bottom-bar">
+        <a href="tel:+9047898435" class="action-btn btn-call">
+            <i class="fa-solid fa-phone"></i> TEXT US
+        </a>
+        <a href="https://maps.google.com/?q=1247 Washington Ave, Miami Beach, FL 33139, United States"
+            class="action-btn btn-directions" target="_blank">
+            <i class="fa-solid fa-location-dot"></i> DIRECTIONS
+        </a>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Select all elements with the 'slide-up' class
+            const animatedElements = document.querySelectorAll('.slide-up');
+
+            // Create the intersection observer
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    // If the element is visible in the viewport
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible'); // Trigger animation
+                        observer.unobserve(entry.target); // Stop watching once animated
+                    }
+                });
+            }, {
+                root: null,
+                threshold: 0.1, // Triggers when 10% of the element is visible
+                rootMargin: "0px 0px -50px 0px" // Triggers slightly before it fully hits the bottom
+            });
+
+            // Attach observer to each element
+            animatedElements.forEach(el => {
+                observer.observe(el);
+            });
+        });
+        function expandArtistCard(cardId) {
+            document.getElementById(cardId).classList.add('oa-expanded');
+        }
+
+
+
+    </script>
+</body>
+
+</html>

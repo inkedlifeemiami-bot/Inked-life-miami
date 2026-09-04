@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- --- ARTIST PROFILE PAGE (juan.html) --- -->
+<style>
+    .profile-page-wrapper {
+        background-color: #f7f7f7;
+        padding: 50px 20px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .profile-content {
+        max-width: 500px;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+
+    .profile-photo {
+        width: 100%;
+        height: auto;
+        display: block;
+        margin-bottom: 25px;
+    }
+
+    .profile-name {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 28px;
+        margin-bottom: 28px;
+        font-weight: bold;
+        color: #1a1a1a;
+    }
+
+    .profile-bio {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        font-size: 15px;
+        line-height: 1.6;
+        color: #7a7a7a;
+        justify-content: center;
+    }
+
+    .profile-bio p {
+        margin-bottom: 15px;
+        color: #7a7a7a;
+    }
+
+    .portfolio-header {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 30px;
+        color: #1a1a1a;
+        margin: 50px 0 40px;
+        font-weight: bold;
+        line-height: 1.2;
+    }
+
+    .portfolio-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .portfolio-stack img {
+        width: 100%;
+        height: auto;
+        display: block;
+        margin-bottom: 8px;
+    }
+
+    .back-btn {
+        display: inline-block;
+        margin-bottom: 20px;
+        color: #65b5b5;
+        text-decoration: none;
+        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+        font-weight: bold;
+    }
+
+    .slide-up {
+        opacity: 0;
+        transform: translateY(60px);
+        /* Starts 60px below */
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        will-change: opacity, transform;
+    }
+
+    .slide-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+        /* Returns to original position */
+    }
+</style>
+
+<body>
+    <div class="profile-page-wrapper">
+        <div class="profile-content">
+            <!-- Back link to return to the main landing page -->
+            <a href="index.html" class="back-btn">← Back to Home</a>
+
+            <img src="/images/juan.jpeg" alt="Juan" class="profile-photo">
+            <h3 class="profile-name">Juan</h3>
+
+            <div class="profile-bio">
+                <p>Meet Juan, a highly skilled tattoo artist renowned for his expertise in the captivating world of
+                    blackwork neo-traditional tattoos. Hailing from an artistic background, Juan’s journey into the
+                    realm of tattooing is a captivating tale of creativity and dedication.</p>
+                <p>Before delving into the art of tattooing, Juan’s artistic roots ran deep, nurturing his innate talent
+                    for visual expression. With a background influenced by traditional art, his unique perspective on
+                    tattooing is deeply rooted in the intricate details and storytelling aspects of his craft.</p>
+                <p>Juan’s foray into the world of tattoos began when he embraced the mesmerizing blackwork
+                    neo-traditional style, a genre that allowed him to weave his creativity into the fascinating world
+                    of ink. His signature style revolves around crafting captivating designs featuring faces, animals,
+                    and skulls, each piece a masterpiece of its own.</p>
+                <p>What sets Juan apart is his remarkable ability to seamlessly merge traditional tattoo elements with
+                    neo-traditional blackwork aesthetics. He breathes life into his tattoos with bold black lines and
+                    meticulous shading, giving depth and character to each piece. His clients are drawn to his
+                    exceptional talent, confident that Juan will translate their visions into stunning, timeless
+                    artwork.
+                </p>
+                <p>Beyond the tattoo studio, Juan’s passion for art knows no bounds. In his free time, he continues to
+                    explore various artistic forms, always seeking new inspiration to infuse into his tattooing. His
+                    dedication to his craft and relentless pursuit of artistic excellence shine through in every piece
+                    he creates.</p>
+                <p>In conclusion, Juan’s journey from an artist with a rich background in traditional art to a
+                    celebrated tattoo maestro in the world of blackwork neo-traditional style is a testament to his
+                    unwavering dedication. His legacy as an artist who seamlessly marries tradition and innovation
+                    continues to captivate and inspire both tattoo enthusiasts and art lovers alike. His work will
+                    forever leave a remarkable mark in the ever-evolving landscape of tattoo artistry.</p>
+
+                <h4 class="portfolio-header">Tattoo Portfolio</h4>
+                <div class="portfolio-stack slide-up">
+                    <img src="/juan portfolio/juanport1.jpg" alt="Tattoo sample 1">
+                    <img src="/juan portfolio/juanport2.jpg" alt="Tattoo sample 2">
+                    <img src="/juan portfolio/juanport3.jpg" alt="Tattoo sample 3">
+                    <img src="/juan portfolio/juanport4.jpg" alt="Tattoo sample 4">
+                    <img src="/juan portfolio/juanport5.jpg" alt="Tattoo sample 5">
+                    <img src="/juan portfolio/juanport6.jpg" alt="Tattoo sample 6">
+                    <img src="/juan portfolio/juanport7.jpg" alt="Tattoo sample 7">
+                    <img src="/juan portfolio/juanport8.jpg" alt="Tattoo sample 8">
+                    <img src="/juan portfolio/juanport9.jpg" alt="Tattoo sample 9">
+                    <img src="/juan portfolio/juanport10.jpg" alt="Tattoo sample 10">
+                    <img src="/juan portfolio/juanport11.jpg" alt="Tattoo sample 11">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Select all elements with the 'slide-up' class
+            const animatedElements = document.querySelectorAll('.slide-up');
+
+            // Create the intersection observer
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    // If the element is visible in the viewport
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible'); // Trigger animation
+                        observer.unobserve(entry.target); // Stop watching once animated
+                    }
+                });
+            }, {
+                root: null,
+                threshold: 0.1, // Triggers when 10% of the element is visible
+                rootMargin: "0px 0px -50px 0px" // Triggers slightly before it fully hits the bottom
+            });
+
+            // Attach observer to each element
+            animatedElements.forEach(el => {
+                observer.observe(el);
+            });
+        });
+        function expandArtistCard(cardId) {
+            document.getElementById(cardId).classList.add('oa-expanded');
+        }
+    </script>
+</body>
+
+</html>

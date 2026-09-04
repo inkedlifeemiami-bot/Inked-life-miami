@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- --- ARTIST PROFILE PAGE (juan.html) --- -->
+<style>
+    .profile-page-wrapper {
+        background-color: #f7f7f7;
+        padding: 50px 20px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .profile-content {
+        max-width: 500px;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+
+    .profile-photo {
+        width: 100%;
+        height: auto;
+        display: block;
+        margin-bottom: 25px;
+    }
+
+    .profile-name {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 28px;
+        margin-bottom: 28px;
+        font-weight: bold;
+        color: #1a1a1a;
+    }
+
+    .profile-bio {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        font-size: 15px;
+        line-height: 1.6;
+        color: #7a7a7a;
+        justify-content: center;
+    }
+
+    .profile-bio p {
+        margin-bottom: 15px;
+        color: #7a7a7a;
+    }
+
+    .portfolio-header {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 30px;
+        color: #1a1a1a;
+        margin: 50px 0 40px;
+        font-weight: bold;
+        line-height: 1.2;
+    }
+
+    .portfolio-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .portfolio-stack img {
+        width: 100%;
+        height: auto;
+        display: block;
+        margin-bottom: 8px;
+    }
+
+    .back-btn {
+        display: inline-block;
+        margin-bottom: 20px;
+        color: #65b5b5;
+        text-decoration: none;
+        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+        font-weight: bold;
+    }
+
+    .slide-up {
+        opacity: 0;
+        transform: translateY(60px);
+        /* Starts 60px below */
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        will-change: opacity, transform;
+    }
+
+    .slide-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+        /* Returns to original position */
+    }
+</style>
+
+<body>
+    <div class="profile-page-wrapper">
+        <div class="profile-content">
+            <!-- Back link to return to the main landing page -->
+            <a href="index.html" class="back-btn">← Back to Home</a>
+
+            <img src="/images/franco.jpg" alt="Franco" class="profile-photo">
+            <h3 class="profile-name">Franco</h3>
+
+            <div class="profile-bio">
+                <p>Franco, a distinguished tattoo artist from Peru, specializes in the avant-garde style known as cyber
+                    fluidity, or blackwork. His journey in tattoo artistry began with a fervent desire to transform
+                    concepts into wearable art. With a unique skill set and a passion for mastering the intricacies of
+                    blackwork, Franco has emerged as a virtuoso in the field. His work ranges from bold, striking
+                    designs to intricate patterns and mesmerizing illusions, all of which showcase his exceptional
+                    ability to translate imagination into captivating ink.</p>
+                <p>At the heart of Franco’s artistry lies his specialization in cyber fluidity. This cutting-edge style
+                    seamlessly combines dark, bold ink with geometric precision and digital-inspired motifs. Each piece
+                    he creates embodies a symphony of contrasts, skillfully dancing between light and shadow. Franco’s
+                    mastery of this style captures the essence of technology and artistry, offering clients a
+                    breathtaking tattoo experience that transcends conventional boundaries.</p>
+                <p>With a career spanning many years of unwavering dedication, Franco’s expertise extends far beyond the
+                    tattoo machine. He is not just a tattoo artist; he’s a storyteller, an artist, and a visionary. His
+                    meticulous attention to detail, relentless pursuit of perfection, and profound commitment to his
+                    craft have solidified his reputation as a true master of the art. Franco invites you to embark on a
+                    journey into the realm of cyber fluidity, where your vision can be transformed into a lasting
+                    masterpiece that reflects your unique identity.</p>
+
+                <h4 class="portfolio-header">Tattoo Portfolio</h4>
+                <div class="portfolio-stack slide-up">
+                    <img src="/franco portfolio/francoport1.jpeg" alt="Tattoo sample 1">
+                    <img src="/franco portfolio/francoport2.jpeg" alt="Tattoo sample 2">
+                    <img src="/franco portfolio/francoport3.jpeg" alt="Tattoo sample 3">
+                    <img src="/franco portfolio/francoport4.jpeg" alt="Tattoo sample 4">
+                    <img src="/franco portfolio/francoport5.jpeg" alt="Tattoo sample 5">
+                    <img src="/franco portfolio/francoport6.jpeg" alt="Tattoo sample 6">
+                    <img src="/franco portfolio/francoport7.jpeg" alt="Tattoo sample 7">
+                    <img src="/franco portfolio/francoport8.jpeg" alt="Tattoo sample 8">
+                    <img src="/franco portfolio/francoport9.jpeg" alt="Tattoo sample 9">
+                    <img src="/franco portfolio/francoport10.jpeg" alt="Tattoo sample 10">
+                    <img src="/franco portfolio/francoport11.jpeg" alt="Tattoo sample 11">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Select all elements with the 'slide-up' class
+            const animatedElements = document.querySelectorAll('.slide-up');
+
+            // Create the intersection observer
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    // If the element is visible in the viewport
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible'); // Trigger animation
+                        observer.unobserve(entry.target); // Stop watching once animated
+                    }
+                });
+            }, {
+                root: null,
+                threshold: 0.1, // Triggers when 10% of the element is visible
+                rootMargin: "0px 0px -50px 0px" // Triggers slightly before it fully hits the bottom
+            });
+
+            // Attach observer to each element
+            animatedElements.forEach(el => {
+                observer.observe(el);
+            });
+        });
+        function expandArtistCard(cardId) {
+            document.getElementById(cardId).classList.add('oa-expanded');
+        }
+    </script>
+</body>
+
+</html>

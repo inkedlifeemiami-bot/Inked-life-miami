@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- --- ARTIST PROFILE PAGE (juan.html) --- -->
+<style>
+    .profile-page-wrapper {
+        background-color: #f7f7f7;
+        padding: 50px 20px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .profile-content {
+        max-width: 500px;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+
+    .profile-photo {
+        width: 100%;
+        height: auto;
+        display: block;
+        margin-bottom: 25px;
+    }
+
+    .profile-name {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 28px;
+        margin-bottom: 28px;
+        font-weight: bold;
+        color: #1a1a1a;
+    }
+
+    .profile-bio {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        font-size: 15px;
+        line-height: 1.6;
+        color: #7a7a7a;
+        justify-content: center;
+    }
+
+    .profile-bio p {
+        margin-bottom: 15px;
+        color: #7a7a7a;
+    }
+
+    .portfolio-header {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 30px;
+        color: #1a1a1a;
+        margin: 50px 0 40px;
+        font-weight: bold;
+        line-height: 1.2;
+    }
+
+    .portfolio-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .portfolio-stack img {
+        width: 100%;
+        height: auto;
+        display: block;
+        margin-bottom: 8px;
+    }
+
+    .back-btn {
+        display: inline-block;
+        margin-bottom: 20px;
+        color: #65b5b5;
+        text-decoration: none;
+        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+        font-weight: bold;
+    }
+
+    .slide-up {
+        opacity: 0;
+        transform: translateY(60px);
+        /* Starts 60px below */
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        will-change: opacity, transform;
+    }
+
+    .slide-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+        /* Returns to original position */
+    }
+</style>
+
+<body>
+    <div class="profile-page-wrapper">
+        <div class="profile-content">
+            <!-- Back link to return to the main landing page -->
+            <a href="index.html" class="back-btn">← Back to Home</a>
+
+            <img src="/images/madeline.jpeg" alt="Madeline" class="profile-photo">
+            <h3 class="profile-name">Madeline</h3>
+
+            <div class="profile-bio">
+                <p>Madeline is an American tattoo artist born and raised in Texas, who has been honing her craft since
+                    2013. Alongside tattooing, she also has experience in painting and illustration. Throughout her
+                    career, she has worked in several studios across Texas, where she has learned from other artists and
+                    continued to develop her skills.</p>
+                <p>Growing up surrounded by the diverse landscapes of the Lone Star State, her work is deeply influenced
+                    by her Southern roots. She is inspired by nature, including local botanicals, sprawling landscapes,
+                    and native fauna, which she often incorporates into her tattoo designs.</p>
+                <p>As an artist, Madi enjoys exploring different styles and techniques to create unique and personalized
+                    tattoos for her clients. She believes that each piece should be special and reflective of the
+                    individuality of the person wearing it. Working closely with clients to ensure their vision is
+                    brought to life, she takes pride in creating tattoos that hold deep meaning and significance.</p>
+                <p>In addition to tattooing, she is also passionate about other mediums of art, including painting and
+                    illustration. This experience has allowed her to develop an eye for detail and a keen sense of color
+                    and composition, which is evident in her custom designs.</p>
+                <p>Overall, Madi is a talented and passionate artist who draws inspiration from her Texan upbringing and
+                    the natural world. Her commitment to creating personalized and meaningful artwork has made her a
+                    sought-after artist in Texas and beyond.</p>
+
+                <h4 class="portfolio-header">Tattoo Portfolio</h4>
+                <div class="portfolio-stack slide-up">
+                    <img src="/ana portfolio/anaport1.jpeg" alt="Tattoo sample 1">
+                    <img src="/ana portfolio/anaport2.jpeg" alt="Tattoo sample 2">
+                    <img src="/ana portfolio/anaport3.jpeg" alt="Tattoo sample 3">
+                    <img src="/ana portfolio/anaport4.jpeg" alt="Tattoo sample 4">
+                    <img src="/ana portfolio/anaport5.jpeg" alt="Tattoo sample 5">
+                    <img src="/ana portfolio/anaport6.jpeg" alt="Tattoo sample 6">
+                    <img src="/ana portfolio/anaport7.jpeg" alt="Tattoo sample 7">
+                    <img src="/ana portfolio/anaport8.jpeg" alt="Tattoo sample 8">
+                    <img src="/ana portfolio/anaport9.jpeg" alt="Tattoo sample 9">
+                    <img src="/ana portfolio/anaport10.jpeg" alt="Tattoo sample 10">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Select all elements with the 'slide-up' class
+            const animatedElements = document.querySelectorAll('.slide-up');
+
+            // Create the intersection observer
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    // If the element is visible in the viewport
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible'); // Trigger animation
+                        observer.unobserve(entry.target); // Stop watching once animated
+                    }
+                });
+            }, {
+                root: null,
+                threshold: 0.1, // Triggers when 10% of the element is visible
+                rootMargin: "0px 0px -50px 0px" // Triggers slightly before it fully hits the bottom
+            });
+
+            // Attach observer to each element
+            animatedElements.forEach(el => {
+                observer.observe(el);
+            });
+        });
+        function expandArtistCard(cardId) {
+            document.getElementById(cardId).classList.add('oa-expanded');
+        }
+    </script>
+</body>
+
+</html>

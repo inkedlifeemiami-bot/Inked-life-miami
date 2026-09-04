@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- --- ARTIST PROFILE PAGE (frank.html) --- -->
+<style>
+    .profile-page-wrapper {
+        background-color: #f7f7f7;
+        padding: 50px 20px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .profile-content {
+        max-width: 500px;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+
+    .profile-photo {
+        width: 100%;
+        height: auto;
+        display: block;
+        margin-bottom: 25px;
+    }
+
+    .profile-name {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 28px;
+        margin-bottom: 28px;
+        font-weight: bold;
+        color: #1a1a1a;
+    }
+
+    .profile-bio {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        font-size: 15px;
+        line-height: 1.6;
+        color: #7a7a7a;
+        justify-content: center;
+    }
+
+    .profile-bio p {
+        margin-bottom: 15px;
+        color: #7a7a7a;
+    }
+
+    .portfolio-header {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 30px;
+        color: #1a1a1a;
+        margin: 50px 0 40px;
+        font-weight: bold;
+        line-height: 1.2;
+    }
+
+    .portfolio-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .portfolio-stack img {
+        width: 100%;
+        height: auto;
+        display: block;
+        margin-bottom: 8px;
+    }
+
+    .back-btn {
+        display: inline-block;
+        margin-bottom: 20px;
+        color: #65b5b5;
+        text-decoration: none;
+        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+        font-weight: bold;
+    }
+
+    .slide-up {
+        opacity: 0;
+        transform: translateY(60px);
+        /* Starts 60px below */
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        will-change: opacity, transform;
+    }
+
+    .slide-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+        /* Returns to original position */
+    }
+</style>
+
+<body>
+    <div class="profile-page-wrapper">
+        <div class="profile-content">
+            <!-- Back link to return to the main landing page -->
+            <a href="index.html" class="back-btn">← Back to Home</a>
+
+            <img src="/images/frankie.PNG" alt="Frank" class="profile-photo">
+            <h3 class="profile-name">Frank</h3>
+
+            <div class="profile-bio">
+                <p>Frank is a highly skilled artist who specializes in creating black and grey realistic tattoo designs,
+                    with his own unique touch in every project he starts. This means that he has the ability to bring
+                    his
+                    own creative vision to each piece he creates, adding a personal flair that makes his work stand out
+                    from
+                    others in the industry.</p>
+                <p>When it comes to the execution process, Frank is most passionate about working on larger pieces such
+                    as
+                    sleeves and leg sleeves. These types of projects require a lot of both patience and attention to
+                    detail
+                    to ensure that the final result is both cohesive and visually stunning. However, despite his
+                    preference
+                    for larger projects, Frank is still capable of creating smaller pieces in any style that his clients
+                    may
+                    desire.</p>
+                <p>In addition to his technical skills, Frank is also known for his ability to communicate effectively
+                    with
+                    his clients. He takes the time to listen to their ideas, understand their preferences, and work with
+                    them to create a tattoo design that they will love and cherish for years to come. With his talent,
+                    experience, and dedication to his craft, it's no wonder that Frank has built a reputation as one of
+                    the
+                    top tattoo artists in his field.</p>
+
+                <h4 class="portfolio-header">Tattoo Portfolio</h4>
+                <div class="portfolio-stack slide-up">
+                    <img src="/Frank portfolio/frankport1.jpg" alt="Tattoo sample 1">
+                    <img src="/Frank portfolio/frankport2.jpg" alt="Tattoo sample 2">
+                    <img src="/Frank portfolio/frankport3.jpg" alt="Tattoo sample 3">
+                    <img src="/Frank portfolio/frankport4.jpg" alt="Tattoo sample 4">
+                    <img src="/Frank portfolio/frankport5.jpg" alt="Tattoo sample 5">
+                    <img src="/Frank portfolio/frankport6.jpg" alt="Tattoo sample 6">
+                    <img src="/Frank portfolio/frankport7.jpg" alt="Tattoo sample 7">
+                    <img src="/Frank portfolio/frankport8.jpg" alt="Tattoo sample 8">
+                    <img src="/Frank portfolio/frankport9.jpg" alt="Tattoo sample 8">
+                    <img src="/Frank portfolio/frankport10.jpg" alt="Tattoo sample 10">
+                    <img src="/Frank portfolio/frankport11.jpg" alt="Tattoo sample 11">
+                    <img src="/Frank portfolio/frankport12.jpg" alt="Tattoo sample 12">
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Select all elements with the 'slide-up' class
+            const animatedElements = document.querySelectorAll('.slide-up');
+
+            // Create the intersection observer
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    // If the element is visible in the viewport
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible'); // Trigger animation
+                        observer.unobserve(entry.target); // Stop watching once animated
+                    }
+                });
+            }, {
+                root: null,
+                threshold: 0.1, // Triggers when 10% of the element is visible
+                rootMargin: "0px 0px -50px 0px" // Triggers slightly before it fully hits the bottom
+            });
+
+            // Attach observer to each element
+            animatedElements.forEach(el => {
+                observer.observe(el);
+            });
+        });
+        function expandArtistCard(cardId) {
+            document.getElementById(cardId).classList.add('oa-expanded');
+        }
+    </script>
+</body>
+
+</html>
